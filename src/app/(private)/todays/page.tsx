@@ -1,4 +1,4 @@
-export default function Todays() {
+export default async function Todays() {
   return (
     <div className='flex justify-center items-center h-screen'>
       <h1>Todays Page</h1>

@@ -1,5 +1,3 @@
-"use client";
-
-export default function AuthError() {
+export default async function AuthError() {
   return <p>Sorry, something went wrong</p>;
 }
