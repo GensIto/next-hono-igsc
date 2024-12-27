@@ -21,6 +21,7 @@ import {
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { logout } from "@/app/(private)/actions/logout";
+import { Database } from "@/schema";
 
 const items = [
   {
@@ -42,10 +43,10 @@ const items = [
 
 export const AppSidebar = ({
   companyName,
-  userName,
+  user,
 }: {
   companyName: string;
-  userName: string;
+  user: Database["public"]["Tables"]["users"]["Row"];
 }) => {
   const pathname = usePathname();
   return (
@@ -76,10 +77,13 @@ export const AppSidebar = ({
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={pathname === "/settings/1"}>
-              <Link href='/settings/1'>
+            <SidebarMenuButton
+              asChild
+              isActive={pathname === `/settings/${user.id}`}
+            >
+              <Link href={`/settings/${user.id}`}>
                 <UserCog />
-                <span>{userName}</span>
+                <span>{user.name}</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
