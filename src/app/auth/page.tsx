@@ -1,7 +1,10 @@
 "use client";
-import { login, signup } from "@/features/auth/actions/login";
+
+import { InputField } from "@/components/form/formFileds";
+import { Button } from "@/components/ui/button";
+import { login } from "@/features/auth/actions/login";
 import { loginSchema } from "@/features/auth/schema/loginSchema";
-import { useForm } from "@conform-to/react";
+import { getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 
 export default function Auth() {
@@ -13,19 +16,31 @@ export default function Auth() {
   });
 
   return (
-    <form id={form.id} onSubmit={form.onSubmit} noValidate>
-      <div>
-        <label htmlFor={fields.email.id}>Email</label>
-        <input type='email' name={fields.email.name} />
-        <div>{fields.email.errors}</div>
-      </div>
-      <div>
-        <label htmlFor={fields.password.id}>Password</label>
-        <input type='password' name={fields.password.name} />
-        <div>{fields.password.errors}</div>
-      </div>
-      <button formAction={login}>Log in</button>
-      <button formAction={signup}>Sign up</button>
-    </form>
+    <div className='flex justify-center items-center h-screen'>
+      <form
+        id={form.id}
+        onSubmit={form.onSubmit}
+        noValidate
+        className='flex flex-col gap-2 max-w-md w-full p-6 border border-gray-200 rounded-md'
+      >
+        <InputField
+          label='Email'
+          formID={fields.email.id}
+          errorId={fields.email.errorId}
+          errors={fields.email.errors}
+          {...getInputProps(fields.email, { type: "email" })}
+        />
+        <InputField
+          label='Password'
+          formID={fields.password.id}
+          errorId={fields.password.errorId}
+          errors={fields.password.errors}
+          {...getInputProps(fields.password, { type: "password" })}
+        />
+        <div className='flex flex-col gap-6'>
+          <Button formAction={login}>Log in</Button>
+        </div>
+      </form>
+    </div>
   );
 }
