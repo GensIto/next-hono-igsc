@@ -37,11 +37,9 @@ export default async function PrivateLayout({
 
   return (
     <SidebarProvider>
-      <main className='flex h-screen'>
+      <main className='flex h-screen w-full'>
         <AppSidebar companyName={companyData.name ?? ""} user={userData} />
-        <div className='flex items-center justify-center flex-1'>
-          {children}
-        </div>
+        <div className='w-full'>{children}</div>
       </main>
     </SidebarProvider>
   );

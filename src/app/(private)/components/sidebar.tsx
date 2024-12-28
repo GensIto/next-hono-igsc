@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sidebar";
 import {
   BabyIcon,
+  CircleUser,
   HeartHandshakeIcon,
   LogOut,
   UserCog,
@@ -70,6 +71,16 @@ export const AppSidebar = ({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              {user.is_admin && (
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild isActive={pathname === "/admin"}>
+                    <Link href='/admin'>
+                      <UserCog />
+                      <span>Admin</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              )}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -82,7 +93,7 @@ export const AppSidebar = ({
               isActive={pathname === `/settings/${user.id}`}
             >
               <Link href={`/settings/${user.id}`}>
-                <UserCog />
+                <CircleUser />
                 <span>{user.name}</span>
               </Link>
             </SidebarMenuButton>

@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === "/") {
-    NextResponse.redirect(new URL("/auth", request.url));
+    return NextResponse.redirect(new URL("/auth", request.url));
   }
   await updateSession(request);
 }
