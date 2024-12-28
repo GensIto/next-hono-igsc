@@ -11,25 +11,13 @@ import {
   Sidebar,
   SidebarFooter,
 } from "@/components/ui/sidebar";
-import {
-  BabyIcon,
-  CircleUser,
-  HeartHandshakeIcon,
-  LogOut,
-  UserCog,
-  UsersIcon,
-} from "lucide-react";
+import { BabyIcon, CircleUser, LogOut, UserCog, UsersIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { logout } from "@/app/(private)/actions/logout";
 import { Database } from "@/schema";
+import { logout } from "@/actions/logout";
 
 const items = [
-  {
-    title: "Todays",
-    url: "/todays",
-    icon: HeartHandshakeIcon,
-  },
   {
     title: "All",
     url: "/all",

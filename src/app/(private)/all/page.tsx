@@ -1,8 +1,6 @@
 import { Avatar } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase";
-import console from "console";
-import { Car } from "lucide-react";
 
 export default async function All() {
   const supabase = await createClient();
@@ -13,7 +11,7 @@ export default async function All() {
     .from("users")
     .select("*")
     .filter("user_id", "not.eq", session?.user?.id);
-  console.log(users);
+
   return (
     <div className='flex justify-center items-center h-screen'>
       {users?.map((user) => (

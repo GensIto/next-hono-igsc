@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/app/(private)/components/sidebar";
+import { AppSidebar } from "@/components/global/sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { createClient } from "@/lib/supabase";
 
