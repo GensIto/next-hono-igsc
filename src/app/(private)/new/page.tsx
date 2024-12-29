@@ -1,7 +1,6 @@
-import { subMonths } from "date-fns";
-import { Card } from "@/components/ui/card";
-import { Avatar } from "@radix-ui/react-avatar";
+import { formatISO, subMonths } from "date-fns";
 import { createClient } from "@/lib/supabase";
+import { MemberCard } from "@/components/global/memberCard";
 
 export default async function New() {
   const threeMonthsAgo = subMonths(new Date(), 3);
@@ -14,22 +13,19 @@ export default async function New() {
     .from("users")
     .select("*")
     .filter("user_id", "not.eq", session?.user?.id)
-    .filter("created_at", "gte", threeMonthsAgo);
+    .filter("created_at", "gte", formatISO(threeMonthsAgo));
+
+  if (!users) {
+    return (
+      <p className='flex justify-center items-center h-screen'>
+        No users found
+      </p>
+    );
+  }
 
   return (
     <div className='flex justify-center items-center h-screen'>
-      {users?.map((user) => (
-        <Card
-          key={user.id}
-          className='w-full max-w-md p-6 flex items-center gap-4 justify-between flex-col'
-        >
-          <Avatar className='bg-indigo-500 size-24' />
-          <div className='w-full'>
-            <p>name: {user.name}</p>
-            <p>department: {user.department}</p>
-          </div>
-        </Card>
-      ))}
+      <MemberCard usersData={users} />
     </div>
   );
 }
