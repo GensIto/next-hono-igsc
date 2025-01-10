@@ -59,15 +59,35 @@ export const AppSidebar = ({
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              <div className='flex items-center justify-center gap-2'>
+                <p>Admin Menu</p>
+                <div className='flex-1 h-1 w-full bg-slate-400' />
+              </div>
               {user.is_admin && (
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild isActive={pathname === "/admin"}>
-                    <Link href='/admin'>
-                      <UserCog />
-                      <span>Admin</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                <>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={pathname === "/create-user"}
+                    >
+                      <Link href='/create-user'>
+                        <UserCog />
+                        <span>create user</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={pathname === "/update-user"}
+                    >
+                      <Link href='/update-user'>
+                        <UserCog />
+                        <span>update user</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </>
               )}
             </SidebarMenu>
           </SidebarGroupContent>

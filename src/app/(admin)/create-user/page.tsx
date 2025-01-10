@@ -2,16 +2,16 @@
 
 import { Card } from "@/components/ui/card";
 
-import { createUserSchema } from "@/features/admin/schema/createUserSchema";
 import { parseWithZod } from "@conform-to/zod";
 import { getInputProps, useForm } from "@conform-to/react";
-import { InputField } from "@/components/form/formFileds";
+import { InputField } from "@/components/form/inputField";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/form/label";
-import { createUserByAdmin } from "@/features/admin/actions/createUser";
+import { createUserByAdmin } from "@/features/create-user/actions/createUser";
+import { createUserSchema } from "@/features/create-user/schema/createUserSchema";
 
-export default function Admin() {
+export default function CreateUser() {
   const [form, fields] = useForm({
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: createUserSchema });

@@ -1,6 +1,6 @@
 "use client";
 
-import { InputField } from "@/components/form/formFileds";
+import { InputField } from "@/components/form/inputField";
 import { Button } from "@/components/ui/button";
 import { login } from "@/features/auth/actions/login";
 import { loginSchema } from "@/features/auth/schema/loginSchema";
